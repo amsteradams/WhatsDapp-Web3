@@ -1,0 +1,68 @@
+import React, { useState, useEffect, createContext } from "react";
+import WhatsDappContract from "./contracts/WhatsDapp.json";
+import getWeb3 from "./getWeb3";
+import "./App.css";
+import Main from "./components/Main/Main";
+
+export const ContractContext = createContext();
+
+const App = () => {
+  const [data, setData] = useState({
+    web3: null,
+    accounts: null,
+    contract: null,
+    owner:null
+  });
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      // Get network provider and web3 instance.
+      const web3 = await getWeb3();
+      // Use web3 to get the user's accounts.
+      const accounts = await web3.eth.getAccounts();
+      const owner = accounts[0];
+      // Get the contract instance.
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = WhatsDappContract.networks[networkId];
+      const instance = new web3.eth.Contract(
+        WhatsDappContract.abi,
+        deployedNetwork && deployedNetwork.address,
+        );
+        //const Owner = await instance.methods.owner().call();
+        
+        // Set web3, accounts, and contract to the state, and then proceed with an
+        // example of interacting with the contract's methods
+        setData({web3, accounts, contract: instance, owner: owner});
+
+      } catch (error) {
+        // Catch any errors for any of the above operations.
+        console.log(
+          `Failed to load web3, accounts, or contract. Check console for details.`,
+        );
+        console.error(error);
+      }
+  };
+  if(data.web3){
+    return (
+      <ContractContext.Provider value={{ data, setData }}>
+        <div id='app'>
+          <Main />
+        </div>
+      </ContractContext.Provider>
+    );
+  }
+  else{
+    return (
+        <div className="app-notwork">
+          Web3 Connection failed
+        </div>
+    )
+  }
+  
+}
+
+export default App;

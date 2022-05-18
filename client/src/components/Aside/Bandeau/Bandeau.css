@@ -1,0 +1,24 @@
+#bandeau{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:#202C33;
+    width:100%;
+    height:6%;position: relative;
+}
+#icons{
+    position: absolute;
+    right:15px;
+}
+#pp{
+    width:37px;
+    height:auto;
+    position: absolute;
+    left:15px;
+}
+.bandeau-icons{
+    width:17px;
+    height:auto;
+    margin:14px;
+    cursor: pointer;
+}

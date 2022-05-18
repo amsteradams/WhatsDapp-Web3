@@ -1,0 +1,8 @@
+#main{
+    width:65vw;
+    height:96vh;
+    background-color: #222E35;
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+}
