@@ -3,6 +3,7 @@ import WhatsDappContract from "./contracts/WhatsDapp.json";
 import getWeb3 from "./getWeb3";
 import "./App.css";
 import Main from "./components/Main/Main";
+import NotRegistered from "./components/NotRegistered/NotRegistered";
 
 export const ContractContext = createContext();
 
@@ -11,7 +12,8 @@ const App = () => {
     web3: null,
     accounts: null,
     contract: null,
-    owner:null
+    owner:null,
+    manager:null
   });
 
   useEffect(() => {
@@ -32,12 +34,26 @@ const App = () => {
         WhatsDappContract.abi,
         deployedNetwork && deployedNetwork.address,
         );
-        //const Owner = await instance.methods.owner().call();
-        
-        // Set web3, accounts, and contract to the state, and then proceed with an
-        // example of interacting with the contract's methods
-        setData({web3, accounts, contract: instance, owner: owner});
+        let manager= null;
+      try {
+        manager = await instance.methods.getManagerOf(owner).call({from:owner});        
+      } catch (error) {
+        manager = null;
+      }  
+        setData({web3, accounts, contract: instance, owner: owner,manager:manager});
 
+        //::::::::::::::::::::::::::EVENTS::::::::::::::::::::::::::
+
+        //event NewUser from WhatsDapp.sol
+        await instance.events.NewUser()
+          .on('data', event => {
+            if(event.returnValues._user == owner){
+              window.location.reload();
+            }
+            })
+          .on('changed', changed => console.log(changed))
+          // .on('error', err => throw err)
+          .on('connected', str => console.log(str))
       } catch (error) {
         // Catch any errors for any of the above operations.
         console.log(
@@ -46,7 +62,7 @@ const App = () => {
         console.error(error);
       }
   };
-  if(data.web3){
+  if(data.web3 && data.manager){
     return (
       <ContractContext.Provider value={{ data, setData }}>
         <div id='app'>
@@ -54,6 +70,13 @@ const App = () => {
         </div>
       </ContractContext.Provider>
     );
+  }
+  else if(data.web3){
+    return(
+      <ContractContext.Provider value={{data, setData}}>
+        <NotRegistered />
+      </ContractContext.Provider>
+    )
   }
   else{
     return (

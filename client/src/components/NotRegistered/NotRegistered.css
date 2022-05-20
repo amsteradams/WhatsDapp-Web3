@@ -1,0 +1,27 @@
+#main-unregistered{
+    width:65vw;
+    height:96vh;
+    background-color: #0A1014;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#join{
+    width: 200px;
+    height:40px;
+    font-size: 1.8em;
+    background-color: #222E35;
+    border:none;
+    color:white;
+    cursor: pointer;
+}
+
+#join:hover{
+    background-color: #3f4f58;
+}
+#whatsdapp-logo{
+    margin-bottom: 40px;
+    width:80px;
+    height:auto;
+}

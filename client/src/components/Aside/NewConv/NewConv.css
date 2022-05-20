@@ -1,0 +1,48 @@
+#form-newConv{
+    width:100%;
+    height:5%;
+    border-bottom:0.01px solid rgba(122, 122, 122,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input-newConv{
+    width:80%;
+    height:65%;
+    border-radius: 5px;
+    border: none;
+    background-color: #202C33;
+    position: relative;
+    display: flex;
+    padding-left: 50px;
+    color:white;
+}
+
+#input-newConv:focus{
+    outline: none;
+}
+
+#input-img{
+    position:absolute;
+    width:15px;
+    height:auto;
+    transform: translateX(-1050%);
+}
+
+#input-img-new{
+    position:absolute;
+    width:15px;
+    height:auto;
+    transform: translateX(1350%);
+    cursor: pointer;
+}
+
+#error-msg{
+    position: absolute;
+    transform: translateY(180%);
+    color:rgba(255, 78, 78, 0.7);
+}
+
+#input-img-new .disabled{
+    cursor: not-allowed;
+}
