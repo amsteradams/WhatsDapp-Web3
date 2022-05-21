@@ -39,6 +39,9 @@ export default function NewConv() {
             else if(regex.test(input) == true && error == true){
                 alert('Your friend is not on whatsDapp')
             }
+            else if(input === context.data.owner){
+                alert("You can't message yourself")
+            }
             else{
                 await contextAside.asideData.manager.methods.newConv(input).send({from:context.data.owner});    
             }

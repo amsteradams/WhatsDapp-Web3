@@ -1,0 +1,41 @@
+#conversation{
+    display: flex;
+    flex-direction: row;
+    height:70px;
+    align-items: center;
+    position: relative;
+    color:white;
+}
+
+#conversation:hover{
+    background-color: #222E35;
+    cursor: pointer;
+}
+
+#central-part{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(131, 131, 131, 0.2);
+    padding: 10px;
+}
+
+#conv-time{
+    position: absolute;
+    right:10px;
+    top:15px;
+    font-size: 0.8em;
+    color:#888888;
+}
+#right-part{
+    width:100%;
+}
+
+#conv-msg{
+    font-size: 0.9em;
+    color: #888888;
+}
+#conversation #left-part img{
+    width:45px;
+    height:auto;
+    margin:12px;
+}

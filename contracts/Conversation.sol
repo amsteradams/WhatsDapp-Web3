@@ -53,4 +53,11 @@ contract Conversation {
     function getAllMessages()external view returns(Message[] memory){
         return messages;
     }
+
+    /**
+    *@return last message
+    */
+    function getLastMessage()external view returns(Message memory){
+        return messages[messages.length - 1];
+    }
 }

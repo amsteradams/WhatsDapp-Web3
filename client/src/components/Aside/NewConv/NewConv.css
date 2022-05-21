@@ -42,7 +42,3 @@
     transform: translateY(180%);
     color:rgba(255, 78, 78, 0.7);
 }
-
-#input-img-new .disabled{
-    cursor: not-allowed;
-}

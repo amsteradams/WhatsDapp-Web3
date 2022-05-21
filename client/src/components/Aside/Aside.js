@@ -4,6 +4,7 @@ import cManager from "../../contracts/Manager.json";
 import Bandeau from './Bandeau/Bandeau';
 import { ContractContext } from '../../App';
 import NewConv from './NewConv/NewConv';
+import Conversations from '../Aside/Conversations/Conversations.js';
 
 export const AsideContext = createContext();
 
@@ -29,7 +30,6 @@ export default function Aside() {
     }
   }
 
-  console.log(asideData, newMessage);
 
   if(!asideData.manager){
     return(
@@ -43,6 +43,7 @@ export default function Aside() {
       <div id="aside">
             <Bandeau />
             {newMessage == true ? <NewConv /> : ""}
+            <Conversations />
       </div>
     </AsideContext.Provider>
   )

@@ -41,5 +41,10 @@ contract Manager{
         Conv memory _conv = Conv(_startedAt, _conversation, _sender, _to);
         conversations.push(_conv);
     }
+    
+    ///@return all conversations
+    function getConvs()external view returns(Conv [] memory){
+        return conversations;
+    }
 
 }
