@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.8",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "emoji-picker-react": "^3.5.1"
   }
 }
