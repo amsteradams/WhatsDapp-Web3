@@ -60,4 +60,11 @@ contract Conversation {
     function getLastMessage()external view returns(Message memory){
         return messages[messages.length - 1];
     }
+
+    /**
+    *@return recipient
+    */
+    function getRecipient()external view returns(address){
+        return recipient;
+    }
 }

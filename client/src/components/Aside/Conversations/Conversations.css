@@ -3,4 +3,20 @@
     display: flex;
     flex-direction: column;
     flex-basis: auto;
+    height:90vh;
+    overflow: scroll;
 }
+
+#conversations::-webkit-scrollbar {
+    width: 6px;
+  }
+
+#conversations::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+#conversations::-webkit-scrollbar-thumb {
+    background-color: #7d768f;
+    border-radius: 0px;
+    border: 0px none transparent;
+  }

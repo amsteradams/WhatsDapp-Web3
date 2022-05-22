@@ -30,6 +30,7 @@ export default function NewConv() {
     
     console.log(input);
     console.log(error);
+
     const addConv = async () => {
         const regex = /^0x[a-fA-F0-9]{40}$/;
         try {
@@ -57,7 +58,7 @@ export default function NewConv() {
             </input>
             <img id='input-img' src="./search.png"/>
             {bool == true && error == false?<img onClick={addConv} id='input-img-new' src="./send-valid.png"/> : ""}
-            {bool == true && error == true? <img style={{cursor:'not-allowed'}}  id='input-img-new' class='disabled' src="./send.png"/> : ""}
+            {bool == true && error == true? <img style={{cursor:'not-allowed', zIndex:'1000'}}  id='input-img-new' className='disabled' src="./send.png"/> : ""}
         </form>
   )
 }

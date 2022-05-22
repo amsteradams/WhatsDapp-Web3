@@ -1,0 +1,20 @@
+#header{
+    width:100%;
+    position:absolute;
+    top:0px;
+    background-color: #202C33;
+    height:6.01%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#header-img{
+    width:35px;
+    height:auto;
+    margin:10px;
+}
+
+#contact-addr{
+    color:white;
+}

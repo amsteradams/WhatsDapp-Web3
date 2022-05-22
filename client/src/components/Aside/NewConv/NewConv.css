@@ -35,6 +35,7 @@
     height:auto;
     transform: translateX(1350%);
     cursor: pointer;
+    z-index: 1;
 }
 
 #error-msg{
