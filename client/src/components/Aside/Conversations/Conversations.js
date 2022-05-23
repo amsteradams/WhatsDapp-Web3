@@ -47,10 +47,23 @@ export default function Conversations() {
             }
         }
         setConversation(tmpArr);
+
+        //event : 
+        await asideContext.asideData.manager.events.NewConversation()
+          .on('data', event => {
+            if(event.returnValues._sender == context.data.owner){
+              getConversations();
+            }
+            })
+          .on('changed', changed => console.log(changed))
+          // .on('error', err => throw err)
+          .on('connected', str => console.log(str))
     }
   return (
-    <div id="conversations">
-        {conversations}
+    <div id='conv-wrapper'>
+      <div id="conversations">
+          {conversations}
+      </div>
     </div>
   )
 }

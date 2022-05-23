@@ -40,6 +40,7 @@ contract Manager{
     function pushConv(uint _startedAt,Conversation _conversation, address _sender, address _to)public{
         Conv memory _conv = Conv(_startedAt, _conversation, _sender, _to);
         conversations.push(_conv);
+        emit NewConversation(_conversation, _sender, user);
     }
     
     ///@return all conversations

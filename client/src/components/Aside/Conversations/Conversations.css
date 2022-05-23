@@ -3,19 +3,22 @@
     display: flex;
     flex-direction: column;
     flex-basis: auto;
-    height:90vh;
-    overflow: scroll;
+    height:fit-content;
+}
+#conv-wrapper{
+  height:90vh;
+  overflow-y: scroll;
 }
 
-#conversations::-webkit-scrollbar {
+#conv-wrapper::-webkit-scrollbar {
     width: 6px;
   }
 
-#conversations::-webkit-scrollbar-track {
+#conv-wrapper::-webkit-scrollbar-track {
     background: transparent;
   }
 
-#conversations::-webkit-scrollbar-thumb {
+#conv-wrapper::-webkit-scrollbar-thumb {
     background-color: #7d768f;
     border-radius: 0px;
     border: 0px none transparent;

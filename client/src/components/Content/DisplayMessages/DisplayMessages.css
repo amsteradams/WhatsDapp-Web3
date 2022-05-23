@@ -1,0 +1,33 @@
+#displayMessage{
+    margin-top: 60px;
+    max-height:auto;
+    margin-top: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#displayMessage:last-child{
+    margin-bottom: 15px;
+}
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height:94%;
+    overflow-y: scroll;
+}
+
+#wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+#wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+#wrapper::-webkit-scrollbar-thumb {
+    background-color: #7d768f;
+    border-radius: 0px;
+
+    border: 0px none transparent;
+  }

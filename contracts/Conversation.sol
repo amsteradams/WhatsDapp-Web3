@@ -67,4 +67,11 @@ contract Conversation {
     function getRecipient()external view returns(address){
         return recipient;
     }
+
+    /**
+    *@return sender
+    */
+    function getSender()external view returns(address){
+        return sender;
+    }
 }

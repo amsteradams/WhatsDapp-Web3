@@ -27,8 +27,17 @@ export default function SendBar() {
   const getInstance = async () => {
     const instance = await new context.data.web3.eth.Contract(convContract.abi, contentContext.data.contract);
     setInstance(instance);
+    //event : 
+    await instance.events.NewMessage()
+            .on('data', event => {
+              if(event.returnValues._sender == context.data.owner || event.returnValues._recipient == context.data.owner){
+                setInput('');
+              }
+              })
+            .on('changed', changed => console.log(changed))
+            // .on('error', err => throw err)
+            .on('connected', str => console.log(str))
   }
-
   const send = async() => {
     if(input != undefined){
     await instance.methods.sendMessage(input).send({from:context.data.owner});
@@ -36,8 +45,8 @@ export default function SendBar() {
   }
   return (
     <div id='sendBar'>
-        <input onChange={e => {handleChange(e.target.value)}} type='text' id='send-input' placeholder='Write your message'/>
-        {bool == true ?<img type='submit' onClick={send} id='send-img' src="./send-valid.png"/> : <img  id='send-img' src="./send.png"/>}
+        <input onChange={e => {handleChange(e.target.value)}} value={input} type='text' id='send-input' placeholder='Write your message'/>
+        {bool == true ?<input type='image' onClick={send} id='send-img' src="./send-valid.png"/> : <img  id='send-img' src="./send.png"/>}
     </div>
   )
 }

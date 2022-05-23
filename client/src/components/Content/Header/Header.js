@@ -31,11 +31,16 @@ export default function Header(props) {
   }
   const getUserAddr = async () => { 
     try {
-      const addr = await instance.methods.getRecipient().call({from:context.data.owner});
-      setUserAddr(addr);
+      const recipient = await instance.methods.getRecipient().call({from:context.data.owner});
+      const sender = await instance.methods.getSender().call({from:context.data.owner});
+      if(context.data.owner === recipient){
+        setUserAddr(sender);
+      }
+      else{
+        setUserAddr(recipient);
+      }
     } catch (error) {
     }  
-    
   }
   return (
     <div id='header'>
